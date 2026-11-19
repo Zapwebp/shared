@@ -194,6 +194,12 @@ const ERROR_CATALOG = Object.freeze({
     fix: 'Increase maxOutputBytes, adjust quality, or downscale image dimensions.',
     suggestedFix: { quality: 70 },
   },
+  E_TARGET_UNREACHABLE: {
+    code: 'E_TARGET_UNREACHABLE',
+    message: 'Cannot fit under the target size even with downscaling.',
+    fix: 'The image is too complex for the target size. Lower the target, or accept a larger file.',
+    suggestedFix: { allowDownscale: true },
+  },
   E_OUTPUT_TOO_SMALL: {
     code: 'E_OUTPUT_TOO_SMALL',
     message: 'Converted output is smaller than minimum required output bytes.',
@@ -299,6 +305,11 @@ const ERROR_CATALOG = Object.freeze({
     code: 'E_EXTREME_ASPECT_RATIO',
     message: 'SVG aspect ratio is extreme and exceeds allowable bounds.',
     fix: 'Check the SVG dimensions. Aspect ratio must be between 0.01:1 and 100:1.',
+  },
+  E_VERIFICATION_FAILED: {
+    code: 'E_VERIFICATION_FAILED',
+    message: 'Output byte verification failed: generated SHA-256 does not match expected hash.',
+    fix: 'Check the expected SHA-256 hash or inspect engine version determinism.',
   },
 });
 
